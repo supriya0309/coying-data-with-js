@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <style>
+            label {
+  display: block
+}
+
+#copy {
+  display: none
+}
+
+        </style>
+    </head>
+    <body>
+            <center>
+                <form>
+                    <label>Name:<input name="name" value="name"></label><br>
+                    <label>City:<input name="city" value="city"></label><br>
+                    <label>phone:<input name="phone'" value="phone"></label><br>
+
+                    <button class=copy>copy</button>
+                  </form></center>
+                  <textarea id=copy></textarea>
+                  <script src="js/lib/jquery.min.js"></script>
+                  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+              <script>
+                  $(document).on('click', '.copy', function(e) {
+                    var serialized = $(this.form).serializeArray()
+                    var text = serialized.map(function(field) {
+                        return field.name+":"+field.value
+                    }).join("\n")
+
+                    $("#copy").show().val(text)[0].select();
+                    document.execCommand("copy");
+                    $("#copy").hide();
+                    alert("Copied the form: " + text);
+
+                    return false
+
+                    })
+
+              </script>
+    </body>
+</html>
+
+
